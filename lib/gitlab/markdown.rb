@@ -71,16 +71,9 @@ module Gitlab
                               Gitlab::Application.config.assets.prefix)
       }
 
-      result = HTML::Pipeline::Gitlab::MarkdownPipeline.call(text,
+      result = HTML::Pipeline::GitLab::MarkdownPipeline.call(text,
                                                              markdown_context)
       text = result[:output].to_html(save_with: 0)
-
-      allowed_attributes = ActionView::Base.sanitized_allowed_attributes
-      allowed_tags = ActionView::Base.sanitized_allowed_tags
-
-      sanitize text.html_safe,
-               attributes: allowed_attributes + %w(id class),
-               tags: allowed_tags + %w(table tr td th)
     end
 
     private
