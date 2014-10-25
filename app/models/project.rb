@@ -118,7 +118,8 @@ class Project < ActiveRecord::Base
   validate :check_limit, on: :create
 
   validate :avatar_type,
-    if: ->(project) { project.avatar && project.avatar_changed? }
+    if: ->(project) { project.avatar &&
+                      project.avatar_changed? }
   validates :avatar, file_size: { maximum: 100.kilobytes.to_i }
 
   mount_uploader :avatar, AttachmentUploader

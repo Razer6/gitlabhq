@@ -67,7 +67,7 @@ describe ApplicationHelper do
         "/uploads/project/avatar/#{ project.id }/gitlab_logo.png"
     end
 
-    it "should give uploaded icon when present" do
+    it 'should give uploaded icon when present' do
       project = create(:project)
       project.save!
 

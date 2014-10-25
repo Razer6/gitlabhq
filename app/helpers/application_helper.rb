@@ -68,8 +68,10 @@ module ApplicationHelper
     bg_color = Digest::MD5.hexdigest(project.name)[0, 6]
     brightness = bg_color[0, 2].hex + bg_color[2, 2].hex + bg_color[4, 2].hex
     text_color = (brightness > 375) ? '#000' : '#fff'
-    content_tag(:div, class: options[:class],
-      style: "background-color: ##{ bg_color }; color: #{ text_color }") do
+    content_tag(:div,
+                class: options[:class],
+                style: "background-color: ##{bg_color}; "\
+                       "color: #{text_color}") do
         project.name[0, 1].upcase
     end
   end
