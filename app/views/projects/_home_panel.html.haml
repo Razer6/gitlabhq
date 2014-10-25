@@ -1,6 +1,8 @@
 - empty_repo = @project.empty_repo?
 .project-home-panel{:class => ("empty-project" if empty_repo)}
   .project-home-row
+    .project-avtatar
+      = project_icon(@project.to_param, alt: '', class: 'avatar s32')
     .project-home-desc
       - if @project.description.present?
         = escaped_autolink(@project.description)
@@ -22,7 +24,6 @@
             - else
               = link_to fork_project_path(@project), title: "Fork project", method: "POST" do
                 = link_to_toggle_fork
-
       .star-buttons
         %span.star.js-toggler-container{class: @show_star ? 'on' : ''}
           - if current_user
